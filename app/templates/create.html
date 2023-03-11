@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<h2>Add New Property</h2>
+
+<form class="form-login m-auto" method="post">
+    {{ form.csrf_token }}
+    <div class="form-div">
+        {{ form.title.label() }}
+        {{ form.title(class="text-box") }}
+
+        {{ form.desc.label() }}
+        {{ form.desc(class="text-box") }}
+
+        {{ form.rooms.label() }}
+        {{ form.rooms(class="text-box") }}
+
+        {{ form.bathrooms.label() }}
+        {{ form.bathrooms(class="text-box") }}
+
+        {{ form.price.label() }}
+        {{ form.price(class="text-box") }}
+
+        {{ form.type.label() }}
+        {{ form.type(class="select-box") }}
+
+        {{ form.location.label() }}
+        {{ form.location(class="text-box") }}
+
+        {{ form.photo.label() }}
+        {{ form.photo }}
+
+        {{form.submit(class="submit-button")}}
+        
+      </div>
+
+{% endblock %}
