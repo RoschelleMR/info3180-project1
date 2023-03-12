@@ -7,7 +7,7 @@ This file contains the routes for your application.
 import os
 from app import app, db
 from werkzeug.utils import secure_filename
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, send_from_directory, redirect, url_for, flash
 from app.models import PropertyProfile
 from .forms import PropertyForm
 
@@ -27,9 +27,11 @@ def about():
     """Render the website's about page."""
     return render_template('about.html', name="Mary Jane")
 
+
 @app.route("/properties")
 def properties():
-    return
+    return render_template("properties.html", properties= get_all_properties())
+
 
 @app.route('/properties/create', methods=['POST', 'GET'])
 def create():
@@ -63,6 +65,19 @@ def create():
     
     return render_template("create.html", form=form)
 
+def get_all_properties():
+    
+    properties = PropertyProfile.query.all()
+    results = []
+    for property in properties:
+        results.append([property.photo_filename, property.title, property.location, property.price])
+    
+    return results
+
+@app.route("/properties/<filename>")
+def get_photo(filename):
+    return send_from_directory(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER']), filename)
+    
 
 ###
 # The functions below should be applicable to all Flask apps.

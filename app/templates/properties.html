@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<h1 class="page-header">All Images</h1>
+
+<ul class="props-container">
+    {% for property in properties %}
+        {%set photo=property[0]%}
+        {%set title=property[1]%}
+        {%set location=property[2]%}
+        {%set price=property[3]%}
+
+        <img src="{{ url_for('get_photo', filename=photo) }}" />
+        <h2>{{title}}</h2>
+        <p>{{location}}</p>
+        <p>{{price}}</p>
+        <button class="btn btn-lg btn-primary w-100 mt-3">View Property</button>
+        
+    {% endfor %}
+</ul>
+
+{% endblock %}
