@@ -6,17 +6,18 @@
 
 <ul class="props-container">
     {% for property in properties %}
-        {%set photo=property[0]%}
-        {%set title=property[1]%}
-        {%set location=property[2]%}
-        {%set price=property[3]%}
+        {%set id=property[0]%}
+        {%set photo=property[1]%}
+        {%set title=property[2]%}
+        {%set location=property[3]%}
+        {%set price=property[4]%}
 
         <div class="property-card">
             <img src="{{ url_for('get_photo', filename=photo) }}" />
             <h2>{{title}}</h2>
             <p>{{location}}</p>
             <p>{{price}}</p>
-            <button class="btn btn-lg btn-primary w-100 mt-3">View Property</button>
+            <button type="button" class="btn btn-lg btn-primary w-100 mt-3" onclick= "window.location.href= '{{url_for('specific_property', propertyid=id)}}'">View Property</button>
         </div>
         
         

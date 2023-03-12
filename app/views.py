@@ -43,7 +43,7 @@ def create():
             
             title = form.title.data
             desc = form.desc.data
-            rooms = form.rooms.data
+            bedrooms = form.bedrooms.data
             bathrooms = form.bathrooms.data
             price = form.price.data
             type = form.type.data
@@ -53,7 +53,7 @@ def create():
             photo_filename = secure_filename(photo.filename)
             photo.save(os.path.join(app.config['UPLOAD_FOLDER'], photo_filename))
             
-            new_prop = PropertyProfile(title, desc, rooms, bathrooms, price, type, location, photo_filename)
+            new_prop = PropertyProfile(title, desc, bedrooms, bathrooms, price, type, location, photo_filename)
             
             #added the property profile to the database
             db.session.add(new_prop)
@@ -65,19 +65,31 @@ def create():
     
     return render_template("create.html", form=form)
 
+
 def get_all_properties():
     
     properties = PropertyProfile.query.all()
     results = []
     for property in properties:
-        results.append([property.photo_filename, property.title, property.location, property.price])
-    
+        results.append([property.id, property.photo_filename, property.title, property.location, property.price])
     return results
 
 @app.route("/properties/<filename>")
 def get_photo(filename):
     return send_from_directory(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER']), filename)
-    
+
+
+
+@app.route("/properties/<propertyid>/")
+def specific_property(propertyid):
+    return render_template("property.html", prop= get_property(propertyid))
+
+
+def get_property(propertyid):
+    property = db.session.execute(db.select(PropertyProfile).filter_by(id=propertyid)).scalar()
+    return property
+
+  
 
 ###
 # The functions below should be applicable to all Flask apps.

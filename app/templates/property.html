@@ -1,0 +1,16 @@
+
+{% extends 'base.html' %}
+
+{% block main %}
+
+    <img src="{{ url_for('get_photo', filename=prop.photo_filename) }}" />
+    <h2>{{prop.title}}</h2>
+    <p>{{prop.desc}}</p>
+    <p>{{prop.bedrooms}}</p>
+    <p>{{prop.bathrooms}}</p>
+    <p>{{prop.location}}</p>
+    <p>{{prop.price}}</p>
+    <p>{{prop.property_type}}</p>
+    <button type="submit" class="btn btn-lg btn-primary w-100 mt-3">Email Realtor</button>
+
+{% endblock %}
