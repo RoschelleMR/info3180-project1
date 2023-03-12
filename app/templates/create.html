@@ -2,37 +2,56 @@
 
 {% block main %}
 
+{% include 'flash_messages.html' %}
+
 <h2>Add New Property</h2>
 
-<form action="{{ url_for('create') }}" class="form-login m-auto" method="post" enctype="multipart/form-data">
+<form action="{{ url_for('create') }}" class="row g-3" method="post" enctype="multipart/form-data">
     {{ form.csrf_token }}
-    <div class="form-div">
-        {{ form.title.label() }}
-        {{ form.title(class="text-box") }}
 
-        {{ form.desc.label() }}
-        {{ form.desc(class="text-box") }}
+    <div class="col-12">
+        {{ form.title.label(class="form-label") }}
+        {{ form.title(class="form-control") }}
+    </div>
 
-        {{ form.bedrooms.label() }}
-        {{ form.bedrooms(class="text-box") }}
+    <div class="mb-3">
+        {{ form.desc.label(class="form-label") }}
+        {{ form.desc(class="form-control") }}
+    </div>
 
-        {{ form.bathrooms.label() }}
-        {{ form.bathrooms(class="text-box") }}
+    <div class="col-md-6">
+      {{ form.bedrooms.label(class="form-label") }}
+      {{ form.bedrooms(class="form-control") }}
+    </div>
 
-        {{ form.price.label() }}
-        {{ form.price(class="text-box") }}
+    <div class="col-md-6">
+      {{ form.bathrooms.label(class="form-label") }}
+      {{ form.bathrooms(class="form-control") }}
+    </div>
 
-        {{ form.type.label() }}
-        {{ form.type(class="select-box") }}
+    <div class="col-md-6">
+      {{ form.price.label(class="form-label") }}
+      {{ form.price(class="form-control") }}
+    </div>
 
-        {{ form.location.label() }}
-        {{ form.location(class="text-box") }}
+    <div class="col-md-6">
+      {{ form.type.label(class="form-label") }}
+      {{ form.type(class="form-control") }}
+    </div>
 
-        {{ form.photo.label() }}
-        {{ form.photo }}
+    <div>
+      {{ form.location.label(class="form-label") }}
+      {{ form.location(class="form-control") }}
+    </div>
 
-        {{form.submit(class="submit-button")}}
-        
-      </div>
+    <div>
+      {{ form.photo.label(class="form-label") }}
+      {{ form.photo (class="form-control") }}
+    </div>
+
+    <div>
+      {{form.submit(class="btn btn-primary")}}
+    </div>
+  </form>
 
 {% endblock %}

@@ -2,9 +2,11 @@
 
 {% block main %}
 
-<h1 class="page-header">All Images</h1>
+{% include 'flash_messages.html' %}
 
-<ul class="props-container">
+<h1 class="page-header">Properties</h1>
+
+<div class="prop-container container-fluid">
     {% for property in properties %}
         {%set id=property[0]%}
         {%set photo=property[1]%}
@@ -12,16 +14,29 @@
         {%set location=property[3]%}
         {%set price=property[4]%}
 
-        <div class="property-card">
-            <img src="{{ url_for('get_photo', filename=photo) }}" />
-            <h2>{{title}}</h2>
-            <p>{{location}}</p>
-            <p>{{price}}</p>
-            <button type="button" class="btn btn-lg btn-primary w-100 mt-3" onclick= "window.location.href= '{{url_for('specific_property', propertyid=id)}}'">View Property</button>
+        <div class="card_row row gy-4">
+            <div class="col-xl">
+                <div class="card" >
+                    <img src="{{ url_for('get_photo', filename=photo) }}" class="card-img-top" />
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">{{title}}</h5>
+                        <p class="card-text text-secondary">{{location}}</p>
+
+                        <div class="price-box">
+                            <p class="card-text">{{price}}</p>
+                        </div>
+                         
+                    </div>
+                    <div class="">
+                        <button type="button" class="prop-btn btn btn-success" style="width: 100%;" onclick= "window.location.href= '{{url_for('specific_property', propertyid=id)}}'">View Property</button>
+                    </div>
+                </div>
+            </div>
         </div>
         
         
+        
     {% endfor %}
-</ul>
+    </div>
 
 {% endblock %}
