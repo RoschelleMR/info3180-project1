@@ -5,14 +5,14 @@ class PropertyProfile(db.Model):
     __tablename__ = 'property_profiles'
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(80))
-    desc = db.Column(db.String(80))
+    title = db.Column(db.String(180))
+    desc = db.Column(db.String(180))
     rooms = db.Column(db.Integer)
     bathrooms = db.Column(db.Integer)
-    price = db.Column(db.String(80))
+    price = db.Column(db.String(180))
     property_type = db.Column(db.String(80))
-    location = db.Column(db.String(80))
-    photo_filename = db.Column(db.String(80))
+    location = db.Column(db.String(180))
+    photo_filename = db.Column(db.String(180))
     
     def __init__(self, title, desc, rooms, bathrooms, price, prop_type, location, photo_filename):
         self.title = title
