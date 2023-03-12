@@ -7,7 +7,7 @@ class PropertyProfile(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(180))
     desc = db.Column(db.String(180))
-    rooms = db.Column(db.Integer)
+    bedrooms = db.Column(db.Integer)
     bathrooms = db.Column(db.Integer)
     price = db.Column(db.String(180))
     property_type = db.Column(db.String(80))
@@ -17,7 +17,7 @@ class PropertyProfile(db.Model):
     def __init__(self, title, desc, rooms, bathrooms, price, prop_type, location, photo_filename):
         self.title = title
         self.desc = desc
-        self.rooms = rooms
+        self.bedrooms = rooms
         self.bathrooms = bathrooms
         self.price = price
         self.property_type = prop_type
