@@ -10,7 +10,7 @@
         <div class="card-body prop-card-body">
             <h3 class="card-title fw-bold">{{prop.title}}</h3>
             <div class="price-box">
-                <p class="card-text fw-bold">{{prop.price}}</p>
+                <p class="card-text fw-bold">${{prop.price}}</p>
             </div>
             <div class="prop-type-box">
                 <p class="card-text fw-bold">{{prop.property_type}}</p>
@@ -18,18 +18,22 @@
 
             <p class="card-text">{{prop.desc}}</p>
 
-            <div class="prop-row row">
-                <div class="col">
+            <div class="prop-row row ">
+                <div class="d-flex align-items-center  col">
+                    <i class="fa fa-bed p-2"></i>
                     <p class="card-text">{{prop.bedrooms}} Bedrooms</p>
                 </div>
                 
-                <div class="col">
+                <div class="d-flex align-items-center col">
+                    <i class="fa fa-shower p-2"></i>
                     <p class="card-text">{{prop.bathrooms}} Bathrooms</p>
                 </div>
             </div>
             
-           
-            <p class="card-text">{{prop.location}}</p>
+            <div class="location-box d-flex align-items-center">
+                <i class="fa fa-location-dot p-2"></i>
+                <p class="card-text">{{prop.location}}</p>
+            </div>
             
             <button type="submit" class="btn btn-primary">Email Realtor</button>
         </div>

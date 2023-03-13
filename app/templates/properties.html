@@ -20,10 +20,15 @@
                     <img src="{{ url_for('get_photo', filename=photo) }}" class="card-img-top" />
                     <div class="card-body">
                         <h5 class="card-title fw-bold">{{title}}</h5>
-                        <p class="card-text text-secondary">{{location}}</p>
+
+                        <div class="location-box">
+                            <i class="bi bi-geo-alt"></i>
+                            <p class="card-text text-secondary">{{location}}</p>
+                        </div>
+                        
 
                         <div class="price-box">
-                            <p class="card-text">{{price}}</p>
+                            <p class="card-text">${{price}}</p>
                         </div>
                          
                     </div>
